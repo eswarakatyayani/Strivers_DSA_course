@@ -5,6 +5,8 @@ Input: nums = [0, 1, 4, 0, 5, 2]
 Output: [1, 4, 5, 2, 0, 0]
 */
 
+//two pointers method
+
 class Solution {
     public void moveZeroes(int[] nums) {
         for(int i=0,j=0;i<nums.length;i++)
