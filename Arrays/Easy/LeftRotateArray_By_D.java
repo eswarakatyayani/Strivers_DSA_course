@@ -23,12 +23,13 @@ rotate 6 steps to the left: [3, 4, 1, 5, 3, -5]
 rotate 7 steps to the left: [4, 1, 5, 3, -5, 3]
 rotate 8 steps to the left: [1, 5, 3, -5, 3, 4]
 */
-
 class Solution {
-    public void rotateArray(int[] arr, int d) {
-     int n = arr.length;
 
-        // Handle cases where d >= n
+    // Left rotate array by d places
+    public static void leftRotate(int[] arr, int d) {
+        int n = arr.length;
+
+        // Handle d greater than n
         d = d % n;
 
         // Step 1: Reverse first d elements
@@ -41,14 +42,25 @@ class Solution {
         reverse(arr, 0, n - 1);
     }
 
-    // Helper function to reverse array from index l to r
+    // Reverse subarray using FOR loop (as requested)
     private static void reverse(int[] arr, int l, int r) {
-        while (l < r) {
-            int temp = arr[l];
-            arr[l] = arr[r];
-            arr[r] = temp;
-            l++;
-            r--;
-        }   
+        int len = r - l + 1;
+
+        for (int i = 0; i < len / 2; i++) {
+            int temp = arr[l + i];
+            arr[l + i] = arr[r - i];
+            arr[r - i] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        int d = 2;
+
+        leftRotate(arr, d);
+
+        for (int x : arr) {
+            System.out.print(x + " ");
+        }
     }
 }
