@@ -27,12 +27,12 @@ class Solution {
             return newNode;
         }
         // Case 2: Non-empty list
-        ListNode temp = head;
+        ListNode temp = head; // we are making both temp and head to point same first node initially
         while (temp.next != null) {
             temp = temp.next;
         }
         temp.next = newNode;
-        return head;
+        return head; // we return from head
     }
 }
 
