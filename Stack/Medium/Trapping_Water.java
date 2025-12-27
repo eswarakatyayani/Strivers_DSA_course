@@ -6,7 +6,8 @@ Output: 6
 Explanation: As seen from the diagram 1+1+2+1+1=6 unit of water can be trapped
 */
 ---------------------------------------------------------------------------
-//Brute Force:
+//Brute Force
+// Here we use max heights to the left and right of current bar.
     
 import java.util.*;
 
@@ -46,7 +47,6 @@ class Solution {
         return totalWater;
     }
 }
-
 public class Main {
     public static void main(String[] args) {
         // Input elevation map
@@ -63,6 +63,7 @@ public class Main {
     }
 }
 --------------------------------------------------------------------
+// Using Stack here the time complexity and space complexity is O(n)
 class Solution {
     public int trap(int[] height) {
         Stack<Integer> stack = new Stack<>();
@@ -80,4 +81,6 @@ class Solution {
         }
         return water;
     }
-}
+--------------------------------------------------------------------------------------
+// Reducing space complexity to O(1) using two pointer approach
+
