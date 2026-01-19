@@ -1,4 +1,5 @@
 /*
+//Longest Substring with atmost K different characters
 Given an integer k and a string s, any character in the string can be selected and changed to any other uppercase English character. This operation can be performed up to k times. After completing these steps, return the length of the longest substring that contains the same letter.
 Example 1
 Input : s = "BAABAABBBAAA" , k = 2
