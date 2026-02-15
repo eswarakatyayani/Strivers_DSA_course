@@ -1,7 +1,7 @@
 class KthLargestUsingHeap {
 
-    // Heapify function (Max Heap)
-    static void heapify(int[] arr, int n, int i) {
+       // Heapify function (Max Heap)
+    private void heapify(int[] arr, int n, int i) {
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -20,23 +20,23 @@ class KthLargestUsingHeap {
         }
     }
 
-    static int kthLargest(int[] arr, int k) {
-        int n = arr.length;
+    public int kthLargestElement(int[] nums, int k) {
+        int n = nums.length;
 
         // Build max heap
         for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(arr, n, i);
+            heapify(nums, n, i);
         }
 
-        // Remove max k-1 times
+        // Remove max element k-1 times
         for (int i = n - 1; i >= n - k + 1; i--) {
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
-            heapify(arr, i, 0);
+            int temp = nums[0];
+            nums[0] = nums[i];
+            nums[i] = temp;
+            heapify(nums, i, 0);
         }
 
-        return arr[0];
+        return nums[0];
     }
 
     public static void main(String[] args) {
