@@ -1,15 +1,15 @@
 class KthLargestUsingHeap {
 
-       // Heapify function (Max Heap)
-    private void heapify(int[] arr, int n, int i) {
+    // Heapify for 1-based index
+    private static void heapify(int[] arr, int n, int i) {
         int largest = i;
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
+        int left = 2 * i;
+        int right = 2 * i + 1;
 
-        if (left < n && arr[left] > arr[largest])
+        if (left <= n && arr[left] > arr[largest])   //For Leaf nodes left > n Condition fail
             largest = left;
 
-        if (right < n && arr[right] > arr[largest])
+        if (right <= n && arr[right] > arr[largest])   //For Leaf nodes right > n Condition fail
             largest = right;
 
         if (largest != i) {
@@ -20,28 +20,34 @@ class KthLargestUsingHeap {
         }
     }
 
-    public int kthLargestElement(int[] nums, int k) {
+    public static int kthLargestElement(int[] nums, int k) {
         int n = nums.length;
 
-        // Build max heap
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(nums, n, i);
+        // Create index 1-based array for heap
+        int[] heap = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            heap[i + 1] = nums[i];
         }
 
-        // Remove max element k-1 times
-        for (int i = n - 1; i >= n - k + 1; i--) {
-            int temp = nums[0];
-            nums[0] = nums[i];
-            nums[i] = temp;
-            heapify(nums, i, 0);
+        // BUILD HEAP: n/2 down to 1
+        for (int i = n / 2; i >= 1; i--) {
+            heapify(heap, n, i);
         }
 
-        return nums[0];
+        // HEAP SORT (extract max k-1 times): n down to 2
+        for (int i = n; i >= n - k + 2; i--) {
+            int temp = heap[1];
+            heap[1] = heap[i];
+            heap[i] = temp;
+            heapify(heap, i - 1, 1);
+        }
+
+        return heap[1];
     }
 
     public static void main(String[] args) {
         int[] arr = {3, 2, 1, 5, 6, 4};
         int k = 2;
-        System.out.println(kthLargest(arr, k)); // Output: 5
+        System.out.println(kthLargestElement(arr, k)); // 5
     }
 }
