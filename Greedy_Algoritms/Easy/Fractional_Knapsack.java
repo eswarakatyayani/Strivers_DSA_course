@@ -40,3 +40,12 @@ class Solution {
         return totalValue;
     }
 }
+/*
+
+Item[] arr = {
+    new Item(60, 10),
+    new Item(100, 20),
+    new Item(120, 30)
+};
+
+*/
