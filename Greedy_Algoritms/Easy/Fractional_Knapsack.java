@@ -49,3 +49,32 @@ Item[] arr = {
 };
 
 */
+
+/*
+Method 1:
+Item[] arr = new Item[3];
+
+arr[0] = new Item(1, 2);
+arr[1] = new Item(4, 5);
+arr[2] = new Item(10, 3);
+
+Method 2:
+Item[] arr = {
+    new Item(1, 2),
+    new Item(4, 5),
+    new Item(10, 3)
+};
+
+Method 3:
+ArrayList<Item> list = new ArrayList<>();
+
+list.add(new Item(1, 2));
+list.add(new Item(4, 5));
+
+Method 4:
+ArrayList<Item> list = new ArrayList<>(Arrays.asList(
+    new Item(1, 2),
+    new Item(4, 5),
+    new Item(10, 3)
+));
+*/
