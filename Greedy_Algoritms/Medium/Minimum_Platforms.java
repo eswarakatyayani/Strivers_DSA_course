@@ -1,3 +1,8 @@
+/* We check the time and do the min platforms required. 
+Time of arrival and departure are sorted. 
+Then two pointers are used to check which arrival time is less, if arrival then count is added.
+Store maxcount all the time.
+*/
 import java.util.Arrays;
 
 public class Main {
