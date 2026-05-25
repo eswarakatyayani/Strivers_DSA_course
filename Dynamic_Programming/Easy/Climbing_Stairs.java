@@ -1,0 +1,48 @@
+/*
+For the classic Climbing Stairs problem:
+
+Let f(n) = number of ways to reach step n.
+To reach step n, the last move must be:
+from n−1 (take 1 step), or
+from n−2 (take 2 steps)
+
+Therefore:
+
+f(n)=f(n−1)+f(n−2)
+
+Base cases:
+
+f(0)=1
+f(1)=1
+
+So the sequence becomes:
+
+1, 1, 2, 3, 5, 8, 13, ...
+*/
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        // Number for which Fibonacci is to be calculated
+        int n = 3;
+
+        // Create a dp array initialized with -1
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, -1);
+
+        // Base cases
+        dp[0] = 1;
+        dp[1] = 1;
+
+        // Fill dp array using bottom-up dynamic programming
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+
+        // Print the nth Fibonacci number
+        System.out.println(dp[n]);
+    }
+}
+
+
