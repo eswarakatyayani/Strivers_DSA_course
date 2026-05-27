@@ -82,3 +82,88 @@ public class FrogJump {
         System.out.println(frogJump(n - 1, heights, dp));
     }
 }
+
+// Bottom-Up (Tabulation)
+
+public class FrogJump {
+
+    static int frogJump(int[] heights) {
+
+        int n = heights.length;
+
+        int[] dp = new int[n];
+        dp[0] = 0;
+
+        for (int ind = 1; ind < n; ind++) {
+
+            int left = dp[ind - 1]
+                    + Math.abs(heights[ind] - heights[ind - 1]);
+
+            int right = Integer.MAX_VALUE;
+
+            if (ind > 1) {
+                right = dp[ind - 2]
+                        + Math.abs(heights[ind] - heights[ind - 2]);
+            }
+
+            dp[ind] = Math.min(left, right);
+        }
+
+        return dp[n - 1];
+    }
+
+    public static void main(String[] args) {
+
+        int[] heights = {30, 10, 60, 10, 60, 50};
+
+        System.out.println(frogJump(heights));
+    }
+}
+
+// Space Optimized
+
+public class FrogJump {
+
+    static int frogJump(int[] heights) {
+
+        int n = heights.length;
+
+        int prev = 0;   // dp[ind - 1]
+        int prev2 = 0;  // dp[ind - 2]
+
+        for (int ind = 1; ind < n; ind++) {
+
+            int left = prev
+                    + Math.abs(heights[ind] - heights[ind - 1]);
+
+            int right = Integer.MAX_VALUE;
+
+            if (ind > 1) {
+                right = prev2
+                        + Math.abs(heights[ind] - heights[ind - 2]);
+            }
+
+            int curr = Math.min(left, right);
+
+            prev2 = prev;
+            prev = curr;
+        }
+
+        return prev;
+    }
+
+    public static void main(String[] args) {
+
+        int[] heights = {30, 10, 60, 10, 60, 50};
+
+        System.out.println(frogJump(heights));
+    }
+}
+/*
+| Approach        | Time  | Space                |
+| --------------- | ----- | -------------------- |
+| Recursion       | O(2ⁿ) | O(n) recursion stack |
+| Memoization     | O(n)  | O(n) + O(n) stack    |
+| Tabulation      | O(n)  | O(n)                 |
+| Space Optimized | O(n)  | O(1)                 |
+*/
