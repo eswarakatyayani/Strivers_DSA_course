@@ -1,3 +1,4 @@
+// Its mentioned in the question that there is an infinite amount of supply is assumed.
 import java.util.*;
 
 class Solution {
