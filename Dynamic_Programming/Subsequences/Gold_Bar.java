@@ -1,4 +1,4 @@
-// Gold Bar
+// Gold Bar (0/1 Knapsack)
 // Longest Common sequence
 // Knapsack Problem
 // Largest Subarray Sum
