@@ -1,5 +1,5 @@
 // Just reverse the string and use the same as the LCS problem
-
+// We need is longest subsequence but it (answer) should be a palindrome
 import java.util.*;
 
 class Solution {
